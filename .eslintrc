@@ -1,0 +1,14 @@
+{
+    "extends": "standard",
+    "rules": {
+        "indent": ["error", 4, {"SwitchCase": 1}],
+        "linebreak-style": ["error", "unix"],
+        "quotes": ["error", "single"],
+        "semi": ["error", "always"],
+        "space-before-function-paren": ["error", "never"]
+    },
+    "env": {
+        "browser": true,
+        "node": true
+    }
+}
