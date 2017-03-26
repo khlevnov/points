@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Map from '../../components/Map';
-import { getPoints } from '../../reducers';
+import { getPoints, getPointsTypesById } from '../../reducers';
 
 class MapContainer extends React.Component {
     constructor(props) {
@@ -50,7 +50,10 @@ class MapContainer extends React.Component {
 
     getPlacemarks(points) {
         return points.map(point => {
-            return new this.ymaps.Placemark(point.coordinates);
+            return new this.ymaps.Placemark(point.coordinates, {}, {
+                preset: 'islands#icon',
+                iconColor: this.props.typesById[point.type].color
+            });
         });
     }
 
@@ -75,7 +78,8 @@ class MapContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    points: getPoints(state)
+    points: getPoints(state),
+    typesById: getPointsTypesById(state)
 });
 
 export default connect(

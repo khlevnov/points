@@ -20,6 +20,10 @@ export const getPointsTypes = (state) => {
     return fromPointsTypes.getPointsTypes(state.pointsTypes);
 };
 
+export const getPointsTypesById = (state) => {
+    return fromPointsTypes.getPointsTypesById(state.pointsTypes);
+};
+
 export const getPointsRanks = (state) => {
     return fromPointsRanks.getPointsRanks(state.pointsRanks);
 };
