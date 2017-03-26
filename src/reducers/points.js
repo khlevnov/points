@@ -3,10 +3,7 @@ import { combineReducers } from 'redux';
 const byId = (state = {}, action) => {
     switch (action.type) {
         case 'RECEIVE_POINTS':
-            return action.response.points.reduce((points, point) => {
-                points[point.id] = point;
-                return points;
-            }, {});
+            return action.points.byId;
 
         default:
             return state;
@@ -15,6 +12,9 @@ const byId = (state = {}, action) => {
 
 const activeIds = (state = [], action) => {
     switch (action.type) {
+        case 'RECEIVE_POINTS':
+            return action.points.activeIds;
+
         default:
             return state;
     }

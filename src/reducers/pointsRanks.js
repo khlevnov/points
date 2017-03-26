@@ -2,13 +2,19 @@ import { combineReducers } from 'redux';
 
 const byId = (state = {}, action) => {
     switch (action.type) {
+        case 'RECEIVE_POINTS':
+            return action.pointsRanks.byId;
+
         default:
             return state;
     }
 };
 
-const activeId = (state = 0, action) => {
+const activeId = (state = null, action) => {
     switch (action.type) {
+        case 'RECEIVE_POINTS':
+            return action.pointsRanks.activeId;
+
         default:
             return state;
     }

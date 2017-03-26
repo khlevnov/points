@@ -46,52 +46,37 @@ class Random {
     };
 
     generatePoints() {
-        let id = 1;
-        const points = [];
-
-        for (let i = 0; i < this.settings.pointsCount; i++) {
-            points.push({
+        const points = {};
+        for (let id = 1; id <= this.settings.pointsCount; id++) {
+            points[id] = {
                 id,
                 coordinates: this.getRandomCoordinates(),
                 rank: this.getRandomRank(),
                 type: this.getRandomType()
-            });
-
-            id++;
+            };
         }
-
         return points;
     }
 
     generateRanks() {
-        let id = 1;
-        const ranks = [];
-
-        for (let i = 0; i < this.settings.ranks.count; i++) {
-            ranks.push({
+        const ranks = {};
+        for (let id = 1; id <= this.settings.ranks.count; id++) {
+            ranks[id] = {
                 id,
                 number: id
-            });
-
-            id++;
+            };
         }
-
         return ranks;
     }
 
     generateTypes() {
-        let id = 1;
-        const types = [];
-
-        for (let i = 0; i < this.settings.types.count; i++) {
-            types.push({
+        const types = {};
+        for (let id = 1; id <= this.settings.types.count; id++) {
+            types[id] = {
                 id,
                 name: this.settings.types.names[id - 1]
-            });
-
-            id++;
+            };
         }
-
         return types;
     }
 }

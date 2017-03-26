@@ -2,6 +2,9 @@ import { combineReducers } from 'redux';
 
 const byId = (state = {}, action) => {
     switch (action.type) {
+        case 'RECEIVE_POINTS':
+            return action.pointsTypes.byId;
+
         default:
             return state;
     }
