@@ -7,7 +7,8 @@ export default {
     },
     devServer: {
         contentBase: path.join(__dirname, 'public'),
-        port: 8080
+        compress: true,
+        port: 9000
     },
     output: {
         path: path.resolve(__dirname, 'public/js'),

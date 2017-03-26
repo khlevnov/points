@@ -1,6 +1,6 @@
 const state = {
     points: {
-        activePoints: [
+        activeIds: [
             1, 3, 4
         ],
         byId: {
