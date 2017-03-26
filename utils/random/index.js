@@ -1,3 +1,4 @@
+const fs = require('fs');
 const settings = require('./settings');
 const Random = require('./random');
 
@@ -8,4 +9,14 @@ const points = {
     pointsTypes: generator.generateTypes()
 };
 
-console.log(points);
+const file = 'public/points.json';
+fs.writeFile(
+    './' + file,
+    JSON.stringify(points, null, '\t'),
+    error => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Точки успешно сохранены в ' + file);
+    }
+);
