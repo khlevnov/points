@@ -4,7 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "generate-xs": "node ./utils/random --count=10",
+    "generate-s": "node ./utils/random --count=100",
+    "generate-m": "node ./utils/random --count=1000",
+    "generate-l": "node ./utils/random --count=10000",
+    "generate-xl": "node ./utils/random --count=100000",
+    "generate-xxl": "node ./utils/random --count=1000000",
+    "generate-xxxl": "node ./utils/random --count=10000000",
   },
   "keywords": [],
   "author": "Oleg Khlevnov",
