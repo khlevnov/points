@@ -45,6 +45,10 @@ class Random {
         ];
     };
 
+    getRandomColor() {
+        return Math.random().toString(36).substr(2, 6);
+    };
+
     generatePoints() {
         const points = {};
         for (let id = 1; id <= this.settings.pointsCount; id++) {
@@ -74,7 +78,8 @@ class Random {
         for (let id = 1; id <= this.settings.types.count; id++) {
             types[id] = {
                 id,
-                name: this.settings.types.names[id - 1]
+                name: this.settings.types.names[id - 1],
+                color: '#' + this.getRandomColor()
             };
         }
         return types;

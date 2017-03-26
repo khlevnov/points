@@ -2,10 +2,12 @@
     padding: 0;
 
     &__ranks {
-        display: none;
+        padding-left: 12px;
+        padding-right: 12px;
     }
 
     &__types {
-        padding: 0 12px;
+        padding-left: 12px;
+        padding-right: 12px;
     }
 }
