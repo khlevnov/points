@@ -12,6 +12,8 @@ const points = () => {
         <Root store={store} />,
         document.getElementById('root')
     );
+
+    window.state = store.getState();
 };
 
 points();
