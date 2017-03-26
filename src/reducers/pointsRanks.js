@@ -26,3 +26,7 @@ const pointsRanks = combineReducers({
 });
 
 export default pointsRanks;
+
+export const getPointsRanks = (state) => {
+    return Object.keys(state.byId).map(id => state.byId[id]);
+};

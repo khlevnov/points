@@ -23,3 +23,7 @@ const pointsTypes = combineReducers({
 });
 
 export default pointsTypes;
+
+export const getPointsTypes = (state) => {
+    return Object.keys(state.byId).map(id => state.byId[id]);
+};

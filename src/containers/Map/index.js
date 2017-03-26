@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Map from '../../components/Map';
 import { getPoints } from '../../reducers';
 
-class YandexMaps extends React.Component {
+class MapContainer extends React.Component {
     constructor(props) {
         super();
 
@@ -80,4 +80,4 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-)(YandexMaps);
+)(MapContainer);

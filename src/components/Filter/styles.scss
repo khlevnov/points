@@ -1,0 +1,10 @@
+.filter {
+    &__ranks {
+        display: none;
+    }
+
+    &__types {
+        column-count: 3;
+        padding: 10px 50px;
+    }
+}
