@@ -13,5 +13,5 @@ const rootReducer = combineReducers({
 export default rootReducer;
 
 export const getPoints = (state) => {
-    return fromPoints.getPoints(state);
+    return fromPoints.getPoints(state.points);
 };

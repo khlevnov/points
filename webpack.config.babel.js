@@ -34,6 +34,26 @@ export default {
                 options: {
                     presets: ['es2015', 'react']
                 }
+            },
+            {
+                test: /(\.scss|\.css)$/,
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            importLoaders: 1,
+                            localIdentName: '[local]'
+                            // localIdentName: '[local]___[hash:base64:8]'
+                        }
+                    },
+                    {
+                        loader: 'sass-loader'
+                    }
+                ]
             }
         ]
     }

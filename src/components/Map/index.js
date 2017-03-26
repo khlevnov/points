@@ -1,7 +1,9 @@
 import React from 'react';
 
-const Map = () => (
-    <div>Карта</div>
+import styles from './styles.scss';
+
+const Map = ({ points }) => (
+    <div className={styles.map} id="map"></div>
 );
 
 export default Map;
