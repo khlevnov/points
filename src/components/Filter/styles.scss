@@ -1,10 +1,11 @@
 .filter {
+    padding: 0;
+
     &__ranks {
         display: none;
     }
 
     &__types {
-        column-count: 3;
-        padding: 10px 50px;
+        padding: 0 12px;
     }
 }
