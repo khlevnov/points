@@ -18,7 +18,7 @@ const points = {
 
 const file = 'public/points.json';
 fs.writeFile(
-    './' + file,
+    file,
     JSON.stringify(points, null, '\t'),
     error => {
         if (error) {

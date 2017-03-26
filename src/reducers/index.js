@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-import points from './points';
+import points, * as fromPoints from './points';
 import pointsRanks from './pointsRanks';
 import pointsTypes from './pointsTypes';
 
@@ -11,3 +11,7 @@ const rootReducer = combineReducers({
 });
 
 export default rootReducer;
+
+export const getPoints = (state) => {
+    return fromPoints.getPoints(state);
+};
