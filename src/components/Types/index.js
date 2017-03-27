@@ -4,6 +4,8 @@ import Subheader from 'material-ui/Subheader';
 import Toggle from 'material-ui/Toggle';
 import Checkbox from 'material-ui/Checkbox';
 
+import { fade } from 'material-ui/utils/colorManipulator';
+
 import styles from './styles.scss';
 
 const Types = ({ types }) => (
@@ -13,7 +15,17 @@ const Types = ({ types }) => (
             <div key={type.id} className={styles.types__item}>
                 <ListItem
                     primaryText={type.name}
-                    rightToggle={<Toggle />}
+                    rightToggle={
+                        <Toggle
+                            defaultToggled={type.active}
+                            trackSwitchedStyle={{
+                                backgroundColor: fade(type.color, 0.3)
+                            }}
+                            thumbSwitchedStyle={{
+                                backgroundColor: type.color
+                            }}
+                        />
+                    }
                     style={{
                         fontSize: '14px'
                     }}
