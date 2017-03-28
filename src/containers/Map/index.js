@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import Map from '../../components/Map';
@@ -10,7 +11,8 @@ class MapContainer extends React.Component {
         this.props = props;
         this.ymaps = window.ymaps;
         this.map = null;
-        this.clusterer = null;
+        // this.clusterer = null;
+        this.objectManagers = null;
 
         this.settings = {
             coordinates: [
@@ -23,8 +25,21 @@ class MapContainer extends React.Component {
     componentDidMount() {
         this.ymaps.ready(() => {
             this.map = this.createMap();
-            this.clusterer = this.getClusterer();
-            this.map.geoObjects.add(this.clusterer);
+            this.objectManager = this.getObjectManager();
+            this.objectManager.add(this.props.points.map(point => ({
+                'type': 'Feature',
+                'id': point.id,
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': point.coordinates
+                },
+                'options': {
+                    'iconColor': this.props.typesById[point.type].color
+                }
+            })));
+            this.map.geoObjects.add(this.objectManager);
+            // this.clusterer = this.getClusterer();
+            // this.map.geoObjects.add(this.clusterer);
             this.updatePoints();
         });
     }
@@ -36,9 +51,14 @@ class MapContainer extends React.Component {
     }
 
     updatePoints() {
-        const placemarks = this.getPlacemarks(this.props.points);
-        this.clusterer.removeAll();
-        this.clusterer.add(placemarks);
+        const activeIds = this.props.points.map(point => point.id);
+
+        this.objectManager.setFilter(point => {
+            return _.includes(activeIds, point.id);
+        });
+        // const placemarks = this.getPlacemarks(this.props.points);
+        // this.clusterer.removeAll();
+        // this.clusterer.add(placemarks);
     }
 
     createMap() {
@@ -54,6 +74,12 @@ class MapContainer extends React.Component {
                 preset: 'islands#icon',
                 iconColor: this.props.typesById[point.type].color
             });
+        });
+    }
+
+    getObjectManager() {
+        return new this.ymaps.ObjectManager({
+            clusterize: true
         });
     }
 

@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
 
 export default rootReducer;
 
-export const getPoints = (state) => {
+export const getPoints = state => {
     let points = fromPoints.getPoints(state.points);
 
     const activeRankId = getActiveRankId(state);
