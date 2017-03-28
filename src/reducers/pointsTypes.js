@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { combineReducers } from 'redux';
 
 const byId = (state = {}, action) => {
@@ -15,6 +14,9 @@ const activeIds = (state = [], action) => {
     switch (action.type) {
         case 'RECEIVE_POINTS':
             return Object.keys(action.pointsTypes.byId).map(id => parseInt(id, 10));
+
+        case 'SET_POINTS_TYPE':
+            return action.typeId;
 
         default:
             return state;
@@ -33,7 +35,6 @@ export const getPointsTypes = state => {
         ...state.byId[id],
         active: true
     }));
-    console.log(res);
     return res;
 };
 
