@@ -15,6 +15,8 @@ export const fetchPoints = () => (dispatch, getState) => {
                 byId: response.pointsRanks
             },
             pointsTypes: {
+                // activeIds: Object.keys(response.pointsTypes).map(id => parseInt(id, 10)),
+                activeIds: [2, 3],
                 byId: response.pointsTypes
             }
         });

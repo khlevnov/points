@@ -11,35 +11,19 @@ class MapContainer extends React.Component {
         this.props = props;
         this.ymaps = window.ymaps;
         this.map = null;
-        // this.clusterer = null;
-        this.objectManagers = null;
+        this.clusterer = null;
 
         this.settings = {
-            coordinates: [
-                56.30170513395401, 43.96532096131706
-            ],
-            zoom: 12
+            coordinates: [56.28159173096391, 43.994716063276606],
+            zoom: 15
         };
     }
 
     componentDidMount() {
         this.ymaps.ready(() => {
             this.map = this.createMap();
-            this.objectManager = this.getObjectManager();
-            this.objectManager.add(this.props.allPoints.map(point => ({
-                'type': 'Feature',
-                'id': point.id,
-                'geometry': {
-                    'type': 'Point',
-                    'coordinates': point.coordinates
-                },
-                'options': {
-                    'iconColor': this.props.typesById[point.type].color
-                }
-            })));
-            this.map.geoObjects.add(this.objectManager);
-            // this.clusterer = this.getClusterer();
-            // this.map.geoObjects.add(this.clusterer);
+            this.clusterer = this.getClusterer();
+            this.map.geoObjects.add(this.clusterer);
             this.updatePoints();
         });
     }
@@ -51,13 +35,9 @@ class MapContainer extends React.Component {
     }
 
     updatePoints() {
-        const activeIds = this.props.points.map(point => point.id);
-        this.objectManager.setFilter(point => {
-            return _.includes(activeIds, point.id);
-        });
-        // const placemarks = this.getPlacemarks(this.props.points);
-        // this.clusterer.removeAll();
-        // this.clusterer.add(placemarks);
+        const placemarks = this.getPlacemarks(this.props.points);
+        this.clusterer.removeAll();
+        this.clusterer.add(placemarks);
     }
 
     createMap() {
@@ -85,7 +65,7 @@ class MapContainer extends React.Component {
 
     getClusterer() {
         return new this.ymaps.Clusterer({
-            preset: 'islands#invertedNightClusterIcons',
+            preset: 'islands#grayClusterIcons',
             groupByCoordinates: false,
             clusterHideIconOnBalloonOpen: false,
             geoObjectHideIconOnBalloonOpen: false,

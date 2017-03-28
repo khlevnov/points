@@ -14,7 +14,7 @@ const byId = (state = {}, action) => {
 const activeIds = (state = [], action) => {
     switch (action.type) {
         case 'RECEIVE_POINTS':
-            return Object.keys(action.pointsTypes.byId).map(id => parseInt(id, 10));
+            return action.pointsTypes.activeIds;
 
         case 'TOGGLE_POINTS_TYPE':
             return _.xor([action.typeId], state);
@@ -34,7 +34,7 @@ export default pointsTypes;
 export const getPointsTypes = state => {
     return Object.keys(state.byId).map(id => ({
         ...state.byId[id],
-        active: true
+        active: _.includes(state.activeIds, parseInt(id, 10))
     }));
 };
 
