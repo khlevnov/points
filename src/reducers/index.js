@@ -29,6 +29,10 @@ export const getPoints = state => {
     return points;
 };
 
+export const getAllPoints = state => {
+    return fromPoints.getAllPoints(state.points);
+};
+
 export const getPointsTypes = state => {
     return fromPointsTypes.getPointsTypes(state.pointsTypes);
 };

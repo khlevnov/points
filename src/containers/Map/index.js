@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import Map from '../../components/Map';
-import { getPoints, getPointsTypesById } from '../../reducers';
+import { getPoints, getAllPoints, getPointsTypesById } from '../../reducers';
 
 class MapContainer extends React.Component {
     constructor(props) {
@@ -26,7 +26,7 @@ class MapContainer extends React.Component {
         this.ymaps.ready(() => {
             this.map = this.createMap();
             this.objectManager = this.getObjectManager();
-            this.objectManager.add(this.props.points.map(point => ({
+            this.objectManager.add(this.props.allPoints.map(point => ({
                 'type': 'Feature',
                 'id': point.id,
                 'geometry': {
@@ -52,7 +52,6 @@ class MapContainer extends React.Component {
 
     updatePoints() {
         const activeIds = this.props.points.map(point => point.id);
-
         this.objectManager.setFilter(point => {
             return _.includes(activeIds, point.id);
         });
@@ -79,7 +78,8 @@ class MapContainer extends React.Component {
 
     getObjectManager() {
         return new this.ymaps.ObjectManager({
-            clusterize: true
+            clusterize: true,
+            gridSize: 100
         });
     }
 
@@ -105,6 +105,7 @@ class MapContainer extends React.Component {
 
 const mapStateToProps = state => ({
     points: getPoints(state),
+    allPoints: getAllPoints(state),
     typesById: getPointsTypesById(state)
 });
 
