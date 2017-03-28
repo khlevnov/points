@@ -8,7 +8,7 @@ import { fade } from 'material-ui/utils/colorManipulator';
 
 import styles from './styles.scss';
 
-const Types = ({ types }) => (
+const Types = ({ types, togglePointsType }) => (
     <div className={styles.types}>
         <Subheader>Типы точек</Subheader>
         {types.map(type =>
@@ -24,6 +24,7 @@ const Types = ({ types }) => (
                             thumbSwitchedStyle={{
                                 backgroundColor: type.color
                             }}
+                            onToggle={(event, isChecked) => togglePointsType(type.id)}
                         />
                     }
                     style={{

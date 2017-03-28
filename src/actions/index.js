@@ -21,12 +21,12 @@ export const fetchPoints = () => (dispatch, getState) => {
     });
 };
 
-export const setRank = (rankId) => ({
+export const setPointsRank = rankId => ({
     type: 'SET_POINTS_RANK',
     rankId
 });
 
-export const setType = (typeId) => ({
-    type: 'SET_POINTS_TYPE',
+export const togglePointsType = typeId => ({
+    type: 'TOGGLE_POINTS_TYPE',
     typeId
 });

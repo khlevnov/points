@@ -4,7 +4,7 @@ import Subheader from 'material-ui/Subheader';
 
 import styles from './styles.scss';
 
-const Ranks = ({ activeRank, setRank }) => (
+const Ranks = ({ activeRank, setPointsRank }) => (
     <div className={styles.ranks}>
         <Subheader>
             Рейтинг точки
@@ -18,7 +18,7 @@ const Ranks = ({ activeRank, setRank }) => (
                 max={10}
                 step={1}
                 defaultValue={activeRank}
-                onChange={(event, rank) => setRank(rank)}
+                onChange={(event, rank) => setPointsRank(rank)}
             />
         </div>
     </div>
