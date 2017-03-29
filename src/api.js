@@ -1,5 +1,5 @@
 export const fetchPoints = () => {
-    return fetch('/points.json')
+    return fetch('points.json')
         .then(response => {
             if (response.status >= 200 && response.status < 300) {
                 return response.json();
