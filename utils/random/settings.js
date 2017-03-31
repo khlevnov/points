@@ -37,7 +37,19 @@ const settings = {
                 max: 44.06271160622496
             }
         }
-    }
+    },
+    colors: [
+        '#E0CA3C',
+        '#7A5C61',
+        '#136F63',
+        '#F34213',
+        '#93A3BC',
+        '#000F08',
+        '#6874E8',
+        '#F7ACCF',
+        '#7EE081',
+        '#48ACF0'
+    ]
 };
 
 module.exports = settings;

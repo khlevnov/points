@@ -7,7 +7,7 @@ import Points from '../../containers/Points';
 import theme from '../../theme';
 
 import normalize from 'normalize.css';
-import base from '../../styles/base.scss';
+import baseStyles from '../../styles/base.scss';
 
 injectTapEventPlugin();
 

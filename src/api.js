@@ -1,3 +1,5 @@
+import 'whatwg-fetch';
+
 export const fetchPoints = () => {
     return fetch('points.json')
         .then(response => {

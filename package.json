@@ -1,7 +1,7 @@
 {
   "name": "points",
   "version": "1.0.0",
-  "description": "",
+  "description": "Карта интересов в виде различных типов точек с рейтингом",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server",
@@ -12,6 +12,10 @@
     "generate-xl": "node ./utils/random --count=100000",
     "generate-xxl": "node ./utils/random --count=1000000",
     "generate-xxxl": "node ./utils/random --count=10000000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:khlevnov/points.git"
   },
   "keywords": [],
   "author": "Oleg Khlevnov",
@@ -30,6 +34,7 @@
     "eslint-config-standard": "^7.1.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^2.1.1",
+    "extract-text-webpack-plugin": "^2.1.0",
     "lodash": "^4.17.4",
     "material-ui": "^0.17.1",
     "node-sass": "^4.5.1",
@@ -46,6 +51,7 @@
     "stylelint": "^7.9.0",
     "stylelint-config-standard": "^16.0.0",
     "webpack": "^2.3.2",
-    "webpack-dev-server": "^2.4.2"
+    "webpack-dev-server": "^2.4.2",
+    "whatwg-fetch": "^2.0.3"
   }
 }

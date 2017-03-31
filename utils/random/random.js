@@ -79,7 +79,7 @@ class Random {
             types[id] = {
                 id,
                 name: this.settings.types.names[id - 1],
-                color: '#' + this.getRandomColor()
+                color: this.settings.colors[id - 1]
             };
         }
         return types;

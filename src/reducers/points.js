@@ -10,27 +10,12 @@ const byId = (state = {}, action) => {
     }
 };
 
-const activeIds = (state = [], action) => {
-    switch (action.type) {
-        case 'RECEIVE_POINTS':
-            return action.points.activeIds;
-
-        default:
-            return state;
-    }
-};
-
 const points = combineReducers({
-    byId,
-    activeIds
+    byId
 });
 
 export default points;
 
 export const getPoints = (state) => {
-    return state.activeIds.map(id => state.byId[id]);
-};
-
-export const getAllPoints = (state) => {
     return Object.keys(state.byId).map(id => state.byId[id]);
 };

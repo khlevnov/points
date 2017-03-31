@@ -24,17 +24,3 @@ const Filter = () => (
 );
 
 export default Filter;
-
-/*
-
-<ListItem primaryText="Notifications" leftCheckbox={<Checkbox />} />
-<ListItem primaryText="Sounds" leftCheckbox={<Checkbox />} />
-<ListItem primaryText="Video sounds" leftCheckbox={<Checkbox />} />
-
-<div className={styles.filter}>
-    <div className={styles.filter__ranks}>
-        <Ranks />
-    </div>
-    <div className={styles.filter__types}></div>
-</div>
-*/

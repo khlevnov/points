@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import Map from '../../components/Map';
-import { getPoints, getAllPoints, getPointsTypesById } from '../../reducers';
+import { getFilteredPoints, getAllPoints, getPointsTypesById } from '../../reducers';
 
 class MapContainer extends React.Component {
     constructor(props) {
@@ -56,23 +56,13 @@ class MapContainer extends React.Component {
         });
     }
 
-    getObjectManager() {
-        return new this.ymaps.ObjectManager({
-            clusterize: true,
-            gridSize: 100
-        });
-    }
-
     getClusterer() {
         return new this.ymaps.Clusterer({
             preset: 'islands#grayClusterIcons',
-            groupByCoordinates: false,
-            clusterHideIconOnBalloonOpen: false,
-            geoObjectHideIconOnBalloonOpen: false,
-            clusterDisableClickZoom: false,
             hasBaloon: false,
-            useMapMargin: false,
-            gridSize: 80
+            hasHint: false,
+            minClusterSize: 3,
+            gridSize: 64
         });
     }
 
@@ -84,7 +74,7 @@ class MapContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    points: getPoints(state),
+    points: getFilteredPoints(state),
     allPoints: getAllPoints(state),
     typesById: getPointsTypesById(state)
 });

@@ -1,22 +1,18 @@
-import _ from 'lodash';
 import * as api from '../api';
 
 export const fetchPoints = () => (dispatch, getState) => {
     api.fetchPoints().then(response => {
-        const activePointsIds = Object.keys(response.points).map(id => parseInt(id, 10));
-
         dispatch({
             type: 'RECEIVE_POINTS',
             points: {
-                activeIds: activePointsIds,
+                activeIds: Object.keys(response.points).map(id => parseInt(id, 10)),
                 byId: response.points
             },
             pointsRanks: {
                 byId: response.pointsRanks
             },
             pointsTypes: {
-                // activeIds: Object.keys(response.pointsTypes).map(id => parseInt(id, 10)),
-                activeIds: [2, 3],
+                activeIds: Object.keys(response.pointsTypes).map(id => parseInt(id, 10)),
                 byId: response.pointsTypes
             }
         });

@@ -1,4 +1,6 @@
 import path from 'path';
+import webpack from 'webpack';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 export default {
     context: path.resolve(__dirname, 'src'),
@@ -46,8 +48,7 @@ export default {
                         options: {
                             modules: true,
                             importLoaders: 1,
-                            localIdentName: '[local]'
-                            // localIdentName: '[local]___[hash:base64:8]'
+                            localIdentName: '[local]___[hash:base64:8]'
                         }
                     },
                     {
@@ -56,5 +57,12 @@ export default {
                 ]
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
+    ]
 };
