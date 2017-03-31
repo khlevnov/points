@@ -1,6 +1,5 @@
 import path from 'path';
 import webpack from 'webpack';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 export default {
     context: path.resolve(__dirname, 'src'),
@@ -62,6 +61,11 @@ export default {
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
+            }
+        }),
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('production')
             }
         })
     ]
